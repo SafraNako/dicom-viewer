@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dicom-goruntuleyici"
+version = "0.1.0"
+description = "DICOM medical image viewer: windowing/leveling per the DICOM standard's exact LINEAR VOI LUT formula, series navigation, and de-identification tag checking, tested against pydicom's public sample datasets"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "SafraNako" }]
+dependencies = [
+    "numpy>=2.0",
+    "matplotlib>=3.7",
+    "pydicom>=2.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+]
+
+[project.scripts]
+dicom-goruntuleyici = "dicom_goruntuleyici.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
